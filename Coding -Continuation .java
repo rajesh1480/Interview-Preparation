@@ -1282,24 +1282,16 @@ public class Main {
 
         // Length of Path Fro X to Y
 
-           static Node LCA(Node root, int n1, int n2){
-                if (root == null)
-                    return root;
-                if (root.value == n1 || root.value == n2)
-                    return root;
-        
-                Node left = LCA(root.left, n1, n2);
-                Node right = LCA(root.right, n1, n2);
-        
-                if (left != null && right != null)
-                    return root;
-                if (left == null && right == null)
-                    return null;
-                if (left != null)
-                    return LCA(root.left, n1, n2);
-                else
-                    return LCA(root.right, n1, n2);
-            }
+               // Least Common Ancestor
+
+                static Node LCA(Node root,int x,int y){
+                        if(root==null) return null;
+                        if(root.data==x || root.data==y) return root;
+                        Node l=LCA(root.left,x,y);
+                        Node r=LCA(root.right,x,y);
+                        if(l!=null && r!=null) return root;
+                        return (l!=null)?l:r;
+                    }
 
               static int findLevel(Node root, int a, int level){
                     if (root == null)
@@ -1320,6 +1312,20 @@ public class Main {
                 
                         return d1 + d2;
                     }
+
+
+        // Diameter of a tree
+
+            static int Diameter(Node root){
+                    if(root==null) return -1;
+                    int l=Height(root.left);
+                    int r=Height(root.right);
+                    int ld=Diameter(root.left);
+                    int rd=Diameter(root.right);
+                    return Math.max((l+r+1),Math.max(ld,rd));       
+                }
+
+        
 
         
 
