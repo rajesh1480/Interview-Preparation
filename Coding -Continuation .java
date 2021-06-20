@@ -81,96 +81,86 @@ public class Main {
 
 
 
-                        //     class TwoStacks {
-                        //     int size;
-                        //     int top1, top2;
-                        //     int arr[];
+                        class TwoStacks {
+                            int size;
+                            int top1, top2;
+                            int arr[];
+                            TwoStacks(int n)
+                            {
+                                arr = new int[n];
+                                size = n;
+                                top1 = -1;
+                                top2 = size;
+                            
+                            void push1(int x)
+                            {
+                                
+                                if (top1 < top2 - 1) {
+                                    top1++;
+                                    arr[top1] = x;
+                                }
+                                else {
+                                    System.out.println("Stack Overflow");
+                                    System.exit(1);
+                                }
+                            }
                         
-                        //     // Constructor
-                        //     TwoStacks(int n)
-                        //     {
-                        //         arr = new int[n];
-                        //         size = n;
-                        //         top1 = -1;
-                        //         top2 = size;
-                        //     }
+                            void push2(int x)
+                            {
+                                if (top1 < top2 - 1) {
+                                    top2--;
+                                    arr[top2] = x;
+                                }
+                                else {
+                                    System.out.println("Stack Overflow");
+                                    System.exit(1);
+                                }
+                            }
                         
-                        //     // Method to push an element x to stack1
-                        //     void push1(int x)
-                        //     {
-                        //         // There is at least one empty space for
-                        //         // new element
-                        //         if (top1 < top2 - 1) {
-                        //             top1++;
-                        //             arr[top1] = x;
-                        //         }
-                        //         else {
-                        //             System.out.println("Stack Overflow");
-                        //             System.exit(1);
-                        //         }
-                        //     }
+                            // Method to pop an element from first stack
+                            int pop1()
+                            {
+                                if (top1 >= 0) {
+                                    int x = arr[top1];
+                                    top1--;
+                                    return x;
+                                }
+                                else {
+                                    System.out.println("Stack Underflow");
+                                    System.exit(1);
+                                }
+                                return 0;
+                            }
+                            int pop2()
+                            {
+                                if (top2 < size) {
+                                    int x = arr[top2];
+                                    top2++;
+                                    return x;
+                                }
+                                else {
+                                    System.out.println("Stack Underflow");
+                                    System.exit(1);
+                                }
+                                return 0;
+                            }
                         
-                        //     // Method to push an element x to stack2
-                        //     void push2(int x)
-                        //     {
-                        //         // There is at least one empty space for
-                        //         // new element
-                        //         if (top1 < top2 - 1) {
-                        //             top2--;
-                        //             arr[top2] = x;
-                        //         }
-                        //         else {
-                        //             System.out.println("Stack Overflow");
-                        //             System.exit(1);
-                        //         }
-                        //     }
-                        
-                        //     // Method to pop an element from first stack
-                        //     int pop1()
-                        //     {
-                        //         if (top1 >= 0) {
-                        //             int x = arr[top1];
-                        //             top1--;
-                        //             return x;
-                        //         }
-                        //         else {
-                        //             System.out.println("Stack Underflow");
-                        //             System.exit(1);
-                        //         }
-                        //         return 0;
-                        //     }
-                        
-                        //     // Method to pop an element from second stack
-                        //     int pop2()
-                        //     {
-                        //         if (top2 < size) {
-                        //             int x = arr[top2];
-                        //             top2++;
-                        //             return x;
-                        //         }
-                        //         else {
-                        //             System.out.println("Stack Underflow");
-                        //             System.exit(1);
-                        //         }
-                        //         return 0;
-                        //     }
-                        
-                        //     // Driver program to test twoStack class
-                        //     public static void main(String args[])
-                        //     {
-                        //         TwoStacks ts = new TwoStacks(5);
-                        //         ts.push1(5);
-                        //         ts.push2(10);
-                        //         ts.push2(15);
-                        //         ts.push1(11);
-                        //         ts.push2(7);
-                        //         System.out.println("Popped element from"
-                        //                            + " stack1 is " + ts.pop1());
-                        //         ts.push2(40);
-                        //         System.out.println("Popped element from"
-                        //                            + " stack2 is " + ts.pop2());
-                        //     }
-                        // }
+                            // Driver program to test twoStack class
+                            public static void main(String args[])
+                            {
+                                TwoStacks ts = new TwoStacks(5);
+                                ts.push1(5);
+                                ts.push2(10);
+                                ts.push2(15);
+                                ts.push1(11);
+                                ts.push2(7);
+                                System.out.println("Popped element from"
+                                                   + " stack1 is " + ts.pop1());
+                                ts.push2(40);
+                                System.out.println("Popped element from"
+                                                   + " stack2 is " + ts.pop2());
+                            }
+                        }
 
         
     // EValuate Postfix Notation
@@ -719,29 +709,675 @@ public class Main {
               // Delete Nth Node From Linked List End
 
                   
-                    void nthendLinekdlist(Node root,int k){
-                        Node s=root;
-                        Node f=root;
-                        for(int i=0;i<k;i++){
-                            if(f.next==null){
-                                if(i==k-1) root=root.next;
-                            }
-                            f=f.next;
-                        }
-                        while(f.next!=null){
-                            s=s.next;
-                            f=f.next;
-                        }
-                        SOP(s.next.data);
-                        s.next=s.next.next;
+                    // void nthendLinekdlist(Node root,int k){
+                    //     Node s=root;
+                    //     Node f=root;
+                    //     for(int i=0;i<k;i++){
+                    //         if(f.next==null){
+                    //             if(i==k-1) root=root.next;
+                    //         }
+                    //         f=f.next;
+                    //     }
+                    //     while(f.next!=null){
+                    //         s=s.next;
+                    //         f=f.next;
+                    //     }
+                    //     SOP(s.next.data);
+                    //     s.next=s.next.next;
+                    // }
+
+
+
+          //   LRU Cache Replacement Technique  
+                         
+                        //   https://www.interviewbit.com/problems/lru-cache/
+
+
+
+        //////   TREES     ///////
+
+        // SIZE OF TREE
+
+               static int Size(Node root){
+                   if(root==null) return 0;
+                   return Size(root.left)+Size(root.right)+1;
+               }
+
+        // Sum Of All Node
+
+             static int Sum(Node root){
+                 if(root==null) return 0;
+                 return root.data+Sum(root.left)+Sum(root.right);
+             }
+
+        // Max Node 
+
+            static int Max(Node root){
+                if(root==null) return Integer.MIN_VALUE;
+                return Math.max(root.data,Math.max(Max(root.left),Max(root.right)));
+            }
+
+        // Height of a tree
+
+            static int Height(Node root){
+                if(root==null) return -1;
+                return  Math.max(Height(root.left),Height(root.right))+1;
+            }
+
+        // Fill Depth of a tree
+
+           static void FillDepth(Node root,int d){// Intinally d=0
+                      if(root==null) return ;
+                      root.depth=d;
+                      FillDepth(root.left,d+1);
+                      FillDepth(root.right,d+1);
+           }
+
+        // Tree Traversal
+
+           static void Inorder(Node root){
+               if(root==null) return;
+               Inorder(root.left);
+               System.out.print(root.data+" ");
+               Inorder(root.right);
+           }
+
+           static void Preorder(Node root){
+               if(root==null) return;
+               System.out.print(root.data+" ");
+               Preorder(root.left);
+               Preorder(root.right);
+           }
+
+           static void Postorder(Node root){
+               if(root==null) return;
+               Postorder(root.left);
+               Postorder(root.right);
+               System.out.print(root.data+" ");
+           }
+
+
+      // Level Order Traversal
+
+         static void Level(Node root){
+             if(root==null) return ;
+             Queue<Node> q=new LinkedList<Node>();
+             q.add(root);
+             q.add(null);
+             while(!q.isEmpty()){
+                 Node t=q.poll();
+                 if(t==null){
+                     if(!q.isEmpty){
+                         q.add(null);
+                         System.out.println();
+                     }
+                 }
+                 else{
+                     if(t.left!=null) q.add(t.left);
+                     if(t.right!=null) q.add(t.right);
+                     System.out.print(t.data+" ");
+                 }
+
+             }
+         }
+
+
+      // Zig Zag Level Order Traversal
+
+           static void ZigZag(Node root){
+               if(root==null) return;
+               Stack<Node> st=new Stack<>();
+               st.push(root);
+               boolean f=false;
+               while(!st.isEmpty()){
+                   Stack<Node> st1=new Stack<>();
+                   while(!st.isEmpty()){
+                       Node t=st.pop();
+                       System.out.print(t.data+" ");
+                       if(f){
+                           if(t.left!=null) st1.push(t.left);
+                           if(t.right!=null) st1.push(t.right);
+                       }
+                       else{
+                           if(t.right!=null) st1.push(t.right);
+                           if(t.left!=null) st1.push(t.left);
+                       }
+                   }
+                   f=!f;
+                   st=st1;
+               }
+           }
+
+        // Bottom Up level order of Tree
+
+          static void Level(Node root,int l){
+              if(root==null) return;
+              if(l==1) System.out.print(root.data+" ");
+              Level(root.left,l-1);
+              Level(root.right,l-1);
+          }
+
+
+           static void Bottom(Node root){
+               if(root==null) return;
+               int h=Height(root);
+               for(int i=h;i>=0;i--){
+                   Level(root,i+1);
+                   System.out.println();
+               }
+           }
+
+        // Zig Zag Bootom Up Level Order of Tree
+
+
+
+        // Convert Binary Tree to Mirror Tree
+
+           static void Mirror(Node root){
+               if(root==null) return;
+               Node t=root.left;
+               root.left=root.right;
+               root.right=t;
+               Mirror(root.left);
+               Mirror(root.right);
+           }
+
+        // Check If two Trees are Mirror to Each Other 
+
+            static boolean Mirror(Node a ,Node b){
+                if(a==null && b==null) return true;
+                if(a==null || b==null) return false;
+                return a.data==b.data && Mirror(a.left,b.right) && Mirror(a.right,b.left);
+            }
+
+        // Vertical Order Of a Tree
+
+            static void gverti(Node root,int c,TreeMap<Integer,List<Integer>> hm){
+                if(root==null) return;
+                List<Integer> l=hm.get(c);
+                if(l==null){
+                    l=new ArrayList<>();
+                    l.add(root.data);
+                }
+                else l.add(root.data);
+                hm.put(c,l);
+                gverti(root.left,c-1,hm);
+                gverti(root.right,c+1,hm);
+            }
+            
+            static void Verti(Node root){
+                TreeMap<Integer,List<Integer>> hm=new TreeMap<>();
+                int c=0;
+                gverti(root,c,hm);
+                for(Map.Entry<Integer,List<Integer>> e:hm.entrySet()){
+                    List<Integer> a=e.getValue();
+                    Collections.sort(a);
+                    for(int i=0;i<a.size();i++){
+                        System.out.print(a.get(i)+" ");
                     }
+                    System.out.println();
+                }
+            }
+
+        // Is FULL BINARY TREE
+
+            static boolean BT(Node root){
+                if(root==null) return true;
+                if(root.left==null && root.right==null) return true;
+                if((root.left!=null) && (root.right!=null))
+                    return (BT(root.left) && BT(root.right));
+                return false;
+            }
+
+        // is COMPLETE BINARY TREE
+
+            static int S(Node root){
+                if(root == null) return 0;
+                return  S(root.left)+S(root.right)+1;
+            }
+            
+            static boolean CBT(Node root,int n,int k){//k=S(root);
+                if(root==null)  return true;
+                if(n>=k) return false;
+                return (CBT(root.left,2*n+1,k) && CBT(root.right,2*n+2,k));
+            }
+
+        // is Balanced Tree
+
+                static boolean BT(Node root){
+                    if(root==null) return true;
+                    int l=Height(root.left);
+                    int r=Height(root.right);
+                    if(Math.abs(l-r)<=1)
+                        if(BT(root.left) && BT(root.right)) return true;
+                    return false;
+                }
+
+
+        //  Left View Of Tree
+
+             static void Leftview(Node root){
+                 if(root==null) return;
+                 Queue<Node> q=new LinkedList<>();
+                 q.add(root);
+                 while(!q.isEmpty()){
+                     int k=q.size();
+                     for(int i=1;i<=k;i++){
+                         Node t=q.poll();
+                         if(i==1) System.out.print(t.data+" ");
+                         if(t.left!=null) q.add(t.left);
+                         if(t.right!=null) q.add(t.right);
+                     }
+                 }
+             }
+
+        // Right View of Tree
+
+             static void Leftview(Node root){
+                 if(root==null) return;
+                 Queue<Node> q=new LinkedList<>();
+                 q.add(root);
+                 while(!q.isEmpty()){
+                     int k=q.size();
+                     for(int i=1;i<=k;i++){
+                         Node t=q.poll();
+                         if(i==k) System.out.print(t.data+" ");
+                         if(t.left!=null) q.add(t.left);
+                         if(t.right!=null) q.add(t.right);
+                     }
+                 }
+             }
+
+        // Top View of Tree
+
+
+            static void Top_view(Node root){
+                if(root!=null){
+                    top_View(root.left,true);
+                    System.out.print(root.data+" ");
+                    top_View(root.right,false);
+                }
+            }
+
+            static void top_View(Node root,boolean t){
+                if(root!=null){
+                    if(t){
+                        top_view(root.left,t);
+                        System.out.print(root.data+" ");
+                    }
+                    else{
+                        System.out.print(root.data+" ");
+                        top_view(root.right,t);
+                    }
+                }
+            }
+
+        
+        // Length of Path From x to y
+
+            static Node LCA(Node root, int n1, int n2){
+                        if (root == null)
+                            return root;
+                        if (root.value == n1 || root.value == n2)
+                            return root;
+                
+                        Node left = LCA(root.left, n1, n2);
+                        Node right = LCA(root.right, n1, n2);
+                
+                        if (left != null && right != null)
+                            return root;
+                        if (left == null && right == null)
+                            return null;
+                        if (left != null)
+                            return LCA(root.left, n1, n2);
+                        else
+                            return LCA(root.right, n1, n2);
+                    }
+
+                     static int findLevel(Node root, int a, int level){
+                            if (root == null)
+                                return -1;
+                            if (root.value == a)
+                                return level;
+                            int left = findLevel(root.left, a, level + 1);
+                            if (left == -1)
+                                return findLevel(root.right, a, level + 1);
+                            return left;
+                        }
+ 
+               
+
+                static int findDistance(Node root, int a, int b){
+                        Node lca = LCA(root, a, b);
+                        int d1 = findLevel(lca, a, 0);
+                        int d2 = findLevel(lca, b, 0);
+                        return d1 + d2;
+                    }
+
+            
+
+            
+
+            
+
+
+
+
+
+
+        // Sum of Numbers From root to Leaf Paths
+
+            static int cd(int k){
+                String s=Integer.toString(k);
+                return s.length();
+            }
+            
+            static int Sum(Node root,int k){
+                if(root==null) return 0;
+                k=((k*Math.pow(10,Cd(root.data)))+root.data);
+                if(root.left==null && root.right==null) return k;
+                return Sum(root.left,k)+Sum(root.right,k);
+            }
+
+        // Given PreOrder ,Inorder  return Post Order
+
+
+            static int f;
+            //Main
+            f=0;
+            Node t=PIP(pre,in,0,n-1);
+            PostOrder(t);
+
+            //function
+
+            static int Find(int ar[],int l,int h,int k){
+                for(int i=l;i<=h;i++) if(ar[i]==k) return i;
+                return -1;
+            }
+
+            static Node PIP(int pre[],int in[],int l,int h){
+                if(l>h) return null;
+                Node root=new Node(pre[f++]);
+                int pos=Find(in,l,h,root.data);
+                if(l==h) return root;
+                root.left=PIP(pre,in, l,pos-1);
+                root.right=PIP(pre,in,pos+1,h);
+                return root;
+            }
+
+
+        // Binary Search Tree
+
+
+           //Main for Insert
+
+               int n=s.nextInt();
+               Node root=null;
+               while(n-->0){
+                   x=s.nextInt();
+                   root=Insert(root,x);
+               }
+
+
+           static Node Insert(Node root,int k){
+               if(root==null) return new Node(k);
+               if(k<root.data) root.left=Insert(root.left,k);
+               else root.right=Insert(root.right,k);
+               return root;
+           }
+
+
+           static boolean Search(Node root,int k){
+               if(root==null) return false;
+               if(root.data==k) return true;
+               if(root.data > k) return Search(root.left,k);
+               else return Search(root.right,k); 
+           }
+
+           static DeleteNode(Node root,int k){
+               if(root==null) return null;
+               if(root.data > k) root.left=DeleteNode(root.left,k);
+               if(root.data < k) root.right=DeleteNode(root.right,k);
+               else{
+                   if(root.left==null)
+                       return root.right;
+                   else if(root.right==null)
+                       return root.left;
+                   else{
+                       root.data=findMax(root.left);
+                       root.left=DeleteNode(root.data,root.left);
+                   }
+               }
+               return root;
+           }
+
+           //find Max
+
+              static int findMax(Node root){
+                  while(root.right!=null) root=root.right;
+                  return root.data;
+              }
+
+
+        // Convert Given Array to CBT
+
+
+             // Main
+                
+                  Node root=null;
+                  int ar[]=new int[n];
+                  for(int i=0;i<n;i++) ar[i]=s.nextInt();
+                  root=Insert(root,ar,0);
+
+            // function
+
+               static Node Insert(Node root,int ar[],int k){
+                   if(k<ar.length){
+                       Node t=new Node(ar[k]);
+                       root=t;
+                       root.left=Insert(root.left,ar,2*k+1);
+                       root.right=Insert(root.right,ar,2*k+2);
+                   }
+                   return root;
+               }
+
+        // Is BST or Not
+
+           // Main  
+
+              if(BST(root,Integer.MIN_VALUE,Integer.MAX_VALUE))
+                System.out.println("True");
+              else
+                System.out.println("False");
+
+          // Function
+
+             static boolean BST(Node root,int a,int b){
+                 if(root==null) return true;
+                 if(root.data>=a && root.data<=b && BST(root.left,a,root.data) && BST(root.left,root.data,b))
+                      return true;
+
+                 return false;
+             }
+
+        // Floor & Ceil of Bst
+
+          //main
+           int floor=-1;
+           int ceil=-1;
+           floorandceil(root,k);
+
+         // function 
+
+           static void floorandceil(Node root,int k){
+               while(root!=null){
+                   if(root.data==k){
+                       floor=root.data;
+                       ceil=root.data;
+                   }
+                   if(root.data > k){
+                       floor=root.data;
+                       root=root.right;
+                   }
+                   else{
+                       ceil=root.data;
+                       root=root.left;
+                   }
+               }
+           }
+
+      
+      // Trim of BST FRom range
+
+        static Node Trim(Node root,int a,int b){
+            if(root==null) return root;
+            if(root.data > b) return Trim(root.left,a,b);
+            if(root.data < a) return Trim(root.right,a,b);
+            root.left=Trim(root.left,a,b);
+            root.right=Trim(root.right,a,b);
+            return root;
+        }
+
+     
+     // Max Sum of Nodes ALong any Path Of BT
+
+        int ans=0;
+        static int maxsum(Node root){
+            if(root==null) return 0;
+            int l=maxsum(root.left);
+            int r=maxsum(root.right);
+            cans=l+r+root.data;
+            // ans=Math.max(ans,cans);
+            return Math.max(Math.max(l,r)+root.data,root.data);
+        }
+
+    // Diagonal Levele Order Traversal
+
+        static void gDiagonal(Node root,int c,TreeMap<Integer,List<Integer>> hm){
+                if(root==null) return;
+                List<Integer> l=hm.get(c);
+                if(l==null){
+                    l=new ArrayList<>();
+                    l.add(root.data);
+                }
+                else l.add(root.data);
+                hm.put(c,l);
+                gDiagonal(root.left,c-0,hm);
+                gDiagonal(root.right,c+1,hm);
+            }
+            
+            static void Diagonal(Node root){
+                TreeMap<Integer,List<Integer>> hm=new TreeMap<>();
+                int c=0;
+                gDiagonal(root,c,hm);
+                for(Map.Entry<Integer,List<Integer>> e:hm.entrySet()){
+                    List<Integer> a=e.getValue();
+                    Collections.sort(a);
+                    for(int i=0;i<a.size();i++){
+                        System.out.print(a.get(i)+" ");
+                    }
+                    System.out.println();
+                }
+            }
+
+        // Length of Path Fro X to Y
+
+           static Node LCA(Node root, int n1, int n2){
+                if (root == null)
+                    return root;
+                if (root.value == n1 || root.value == n2)
+                    return root;
+        
+                Node left = LCA(root.left, n1, n2);
+                Node right = LCA(root.right, n1, n2);
+        
+                if (left != null && right != null)
+                    return root;
+                if (left == null && right == null)
+                    return null;
+                if (left != null)
+                    return LCA(root.left, n1, n2);
+                else
+                    return LCA(root.right, n1, n2);
+            }
+
+              static int findLevel(Node root, int a, int level){
+                    if (root == null)
+                        return -1;
+                    if (root.value == a)
+                        return level;
+                    int left = findLevel(root.left, a, level + 1);
+                    if (left == -1)
+                        return findLevel(root.right, a, level + 1);
+                    return left;
+                }
+
+                 static int findDistance(Node root, int a, int b){
+                        Node lca = LCA(root, a, b);
+                
+                        int d1 = findLevel(lca, a, 0);
+                        int d2 = findLevel(lca, b, 0);
+                
+                        return d1 + d2;
+                    }
+
+        
+
+        
+
+        
+
+
+         
+
+       
+
+         
+
+            
+
+
+        
+
+
+
+            
+
+          
+           
+              
+          
+
+
+        
+
+           
+
+          
+
+           
+
+
+
+
+
+
+
+            
+              
+
+
+                         
+
+
+            
+
+
+        
 
 
 
     
-
-
-    //////   TREES     ///////
 
 
 
